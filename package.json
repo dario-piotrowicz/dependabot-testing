@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/dario-piotrowicz/dependabot-testing/issues"
   },
-  "homepage": "https://github.com/dario-piotrowicz/dependabot-testing#readme"
+  "homepage": "https://github.com/dario-piotrowicz/dependabot-testing#readme",
+  "dependencies": {
+    "create-cloudflare": "^2.0.0"
+  }
 }
