@@ -6,6 +6,6 @@ updates:
     directory: "/packages/create-cloudflare/src/frameworks"
     schedule:
       interval: "daily"
-    versioning-strategy: increase
+    # versioning-strategy: increase
     commit-message:
       prefix: "[C3] "
