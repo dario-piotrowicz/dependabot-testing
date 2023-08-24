@@ -25,7 +25,9 @@ jobs:
             ${{ github.event.pull_request.body }}
           EOF
           )
-          echo ::set-output name=result::$str
+          echo 'result<<EOF' >> $GITHUB_OUTPUT
+          echo $str >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
       - name: detect-bumped-framework
         id: detect
         uses: actions/github-script@v6
