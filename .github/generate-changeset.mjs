@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import { writeFileSync } from 'fs';
 
-const diff = execSync(`git diff HEAD~1 packages/create-cloudflare/src/frameworks/package.json`).toString();
+const diff = execSync('git diff HEAD~1 packages/create-cloudflare/src/frameworks/package.json').toString();
 
 const changedPackages = diff.match(/-\s*".*":\s".*",?/g)?.map(
     match => match.match(/-\s*"(.*)":/)?.[1]
@@ -45,6 +45,4 @@ ${
     execSync("git add .changeset");
     execSync("git commit --amend -m '[C3] Update frameworks CLIs dependencies'");
     execSync("git push -f");
-
-
 }

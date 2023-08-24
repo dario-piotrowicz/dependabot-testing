@@ -8,7 +8,7 @@ updates:
       interval: "daily"
     # versioning-strategy: increase
     commit-message:
-      prefix: "[C3] "
+      prefix: "[commit-prefix] "
     labels:
       - "C3"
       - "dependencies"
