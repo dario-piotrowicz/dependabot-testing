@@ -2,7 +2,7 @@ name: Sync Renovate changeset
 on:
   pull_request_target:
     paths:
-      - '.github/*'
+      - '.github/'
       - 'packages/create-cloudflare/src/frameworks/package.json'
 
 jobs:
