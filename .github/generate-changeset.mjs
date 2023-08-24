@@ -90,13 +90,16 @@ import { writeFileSync } from 'fs';
 //     console.log(stdout);
 // });
 
+const branchName = process.argv[2];
+
+execSync(`git switch ${branchName}`);
+
 writeFileSync(`.changeset/changeset-${Math.round(Math.random() * 100000)}.md`,
 `---
 "dependabot-testing": patch
 ---
 
-this is a test
-${process.argv}
+this is a test (${branchName})
 `);
 
 execSync("git add .changeset");
