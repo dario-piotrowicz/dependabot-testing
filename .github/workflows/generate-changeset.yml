@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     if: true
     steps:
-      - name: echo actor
-        run: echo ${{ github.actor }}
+      - name: echo user
+        run: echo ${{ github.event.user.login }}
       - name: echo labels
         run: echo ${{ toJson(github.event.labels) }}
       - name: echo contains dependencies
