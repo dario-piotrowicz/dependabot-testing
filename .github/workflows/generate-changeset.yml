@@ -15,10 +15,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          fetch-depth: 2
+        with:
           ref: ${{ github.head_ref }}
       - name: Configure Git
         run: |
           git config --global user.email test-fdswgwetpl1235m@test.test
           git config --global user.name 'Github changeset workflow'
       - name: Generate changeset
-        run: node .github/generate-changeset.mjs "${{github.head_ref}}"
+        run: node .github/generate-changeset.mjs "${{github.head_ref}}" "${{github.base_ref}}"
