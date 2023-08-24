@@ -1,0 +1,20 @@
+name: Sync Renovate changeset
+on:
+  pull_request_target:
+    paths:
+      - '.github/*'
+      - 'packages/create-cloudflare/src/frameworks/package.json'
+
+jobs:
+  generate-changeset:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Configure Git
+        run: |
+          git config --global user.email test-fdswgwetpl1235m@test.test
+          git config --global user.name 'Github changeset workflow'
+      - name: Generate changeset
+        run: node .github/generate-changeset.mjs
