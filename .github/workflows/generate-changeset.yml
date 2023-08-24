@@ -1,20 +1,26 @@
-name: Sync Renovate changeset
+name: Generate changeset
 on:
-  pull_request_target:
-    paths:
-      - '.github/*'
-      - 'packages/create-cloudflare/src/frameworks/package.json'
+  pull_request_target
+  # :
+    # paths:
+    #   - 'packages/create-cloudflare/src/frameworks/package.json'
 
 jobs:
   generate-changeset:
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
+    # if: github.actor == 'dependabot[bot]'
     steps:
+      - name: show github context
+        run: echo "${{ toJson(github) }}"
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+        with:
+          ref: ${{ github.head_ref }}
       - name: Configure Git
         run: |
           git config --global user.email test-fdswgwetpl1235m@test.test
           git config --global user.name 'Github changeset workflow'
       - name: Generate changeset
-        run: node .github/generate-changeset.mjs
+        run: node .github/generate-changeset.mjs "${{github.head_ref}}" "${{github.base_ref}}"
