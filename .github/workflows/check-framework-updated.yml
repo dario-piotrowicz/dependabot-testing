@@ -56,7 +56,7 @@ jobs:
             const semverRegexStr = '\\d+\\.\\d+\\.\\d+';
 
             const frameworkCliRegex = new RegExp(
-              `\\s+Bumps\\s+\\[(${frameworkCliPackages.join(
+              `(?:^|\\s+)Bumps\\s+\\[(${frameworkCliPackages.join(
                 '|'
               )})\\]\\(.*?\\)\\s+from\\s+${semverRegexStr}\\s+to\\s+${semverRegexStr}`
             );
