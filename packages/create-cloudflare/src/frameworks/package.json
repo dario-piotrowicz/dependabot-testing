@@ -22,7 +22,8 @@
 		"react": "18.0.0",
 		"async": "2.0.0",
 		"qwik": "1.0.0",
-		"@builder.io/qwik": "1.2.0"
+		"@builder.io/qwik": "1.2.0",
+		"chalk": "5.0.0"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
