@@ -26,16 +26,15 @@ const changes = changedPackages.map(pkg => {
 });
 
 if(!changes.length) {
-    throw new Error('No changes detected');
-}
+    console.warn('No changes detected!');
+} else {
 
-writeFileSync(`.changeset/changeset-${Math.round(Math.random() * 100000)}.md`,
+    writeFileSync(`.changeset/changeset-${Math.round(Math.random() * 100000)}.md`,
 `---
 "dependabot-testing": patch
 ---
 
 Updated dependencies
-
 ${
     changes.map(({package: pkg, from, to}) => 
         ` - \`${pkg}\` from \`${from}\` to \`${to}\``
@@ -47,3 +46,5 @@ ${
 execSync("git add .changeset");
 execSync("git commit -m 'update dependencies'");
 execSync("git push -f");
+
+}
