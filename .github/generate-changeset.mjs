@@ -28,7 +28,6 @@ const changes = changedPackages.map(pkg => {
 if(!changes.length) {
     console.warn('No changes detected!');
 } else {
-
     writeFileSync(`.changeset/changeset-${Math.round(Math.random() * 100000)}.md`,
 `---
 "dependabot-testing": patch
@@ -43,8 +42,9 @@ ${
 
 `);
 
-execSync("git add .changeset");
-execSync("git commit -m 'update dependencies'");
-execSync("git push -f");
+    execSync("git add .changeset");
+    execSync("git commit --amend -m '[C3] Update frameworks CLIs dependencies'");
+    execSync("git push -f");
+
 
 }
