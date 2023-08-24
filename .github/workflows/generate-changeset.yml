@@ -16,8 +16,8 @@ jobs:
         run: echo ${{ toJson(github.event.labels) }}
       - name: echo contains dependencies
         run: echo ${{ contains(github.event.labels.*.name, 'dependencies') }}
-      # - name: show github context
-      #   run: echo "${{ toJson(github) }}"
+      - name: show github context
+        run: echo "${{ toJson(github) }}"
       - name: Checkout
         uses: actions/checkout@v3
         with:
