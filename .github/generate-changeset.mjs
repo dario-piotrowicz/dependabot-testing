@@ -28,19 +28,26 @@ const changes = changedPackages.map(pkg => {
 if(!changes.length) {
     console.warn('No changes detected!');
 } else {
-    writeFileSync(`.changeset/changeset-${Math.round(Math.random() * 100000)}.md`,
-`---
+	writeFileSync(
+		`.changeset/c3-frameworks-update-${new Date().getTime()}.md`,
+		`---
 "dependabot-testing": patch
 ---
 
-Updated dependencies
-${
-    changes.map(({package: pkg, from, to}) => 
-        ` - \`${pkg}\` from \`${from}\` to \`${to}\``
-    ).join('\n')
+Framework CLI versions updated in C3
+
+The following framework CLI versions have been updated in C3:
+${[
+	"| Package | from | to |",
+	"|---------|------|----|",
+    ...changes.map(({package: pkg, from, to}) =>
+        `| \`${pkg}\`| \`${from}\` | \`${to}\` |`
+    ),
+].map(str => `   ${str}`).join("\n")
 }
 
-`);
+`
+	);
 
     execSync("git add .changeset");
     execSync("git commit --amend -m '[C3] Update frameworks CLIs dependencies'");
