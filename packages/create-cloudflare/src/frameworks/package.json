@@ -20,7 +20,7 @@
 		"gatsby": "5.10.0",
 		"nuxi": "3.4.2",
 		"zod": "3.0.2",
-		"zodcli": "0.0.1"
+		"zodcli": "0.0.4"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
