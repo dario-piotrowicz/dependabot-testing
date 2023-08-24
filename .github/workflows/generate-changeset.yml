@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     if: true
     steps:
+      - name: show event
+        run: echo "${{ toJson(github.event) }}"
       - name: echo user
         run: echo ${{ github.event.user.login }}
       - name: echo labels
