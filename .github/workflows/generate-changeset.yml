@@ -24,3 +24,13 @@ jobs:
           git config --global user.name 'Github changeset workflow'
       - name: Generate changeset
         run: node .github/generate-changeset.mjs
+      - name: Update PR Title
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.pulls.update({
+              ...context.repo,
+              pull_number: context.payload.pull_request.number,
+              title: "C3: Updating Framework CLIs versions"
+            });
