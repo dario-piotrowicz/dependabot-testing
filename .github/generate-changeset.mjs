@@ -1,8 +1,8 @@
 import { execSync } from 'child_process';
 import { writeFileSync } from 'fs';
 
-const branchName = process.argv[2];
-const targetBranch = process.env[3];
+const branchName = process.argv[1];
+const targetBranch = process.env[2];
 
 const diff = execSync(`git diff ${branchName}..${targetBranch} packages/create-cloudflare/src/frameworks/package.json`).toString();
 
