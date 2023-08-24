@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import { writeFileSync } from 'fs';
 
-const prNumber = process.env[2];
+const prNumber = process.argv[2];
 
 const diff = execSync('git diff HEAD~1 packages/create-cloudflare/src/frameworks/package.json').toString();
 
