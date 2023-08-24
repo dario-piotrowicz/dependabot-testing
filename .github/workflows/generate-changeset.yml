@@ -1,9 +1,9 @@
 name: Sync Renovate changeset
 on:
-  pull_request_target:
-    paths:
-      - '.github/'
-      - 'packages/create-cloudflare/src/frameworks/package.json'
+  pull_request_target
+  # :
+    # paths:
+    #   - 'packages/create-cloudflare/src/frameworks/package.json'
 
 jobs:
   generate-changeset:
