@@ -9,7 +9,7 @@ jobs:
   get-bumped-framework:
     runs-on: ubuntu-latest
     outputs:
-      bumped-framework: ${{ steps.detect-bumped-framework.outputs.result }}
+      bumped-framework: ${{ steps.detect.outputs.result }}
     if: |
       github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
@@ -27,6 +27,7 @@ jobs:
           )
           echo ::set-output name=result::$str
       - name: detect-bumped-framework
+        id: detect
         uses: actions/github-script@v6
         with:
           result-encoding: string
