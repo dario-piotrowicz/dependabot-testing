@@ -17,7 +17,6 @@ jobs:
           fetch-depth: 2
           ref: ${{ github.head_ref }}
       - name: Configure Git
-        if: false
         run: |
           git config --global user.email test-fdswgwetpl1235m@test.test
           git config --global user.name 'Github changeset workflow'
