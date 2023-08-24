@@ -9,3 +9,6 @@ updates:
     # versioning-strategy: increase
     commit-message:
       prefix: "[C3] "
+    labels:
+      - "C3"
+      - "dependencies"
