@@ -71,6 +71,7 @@
 //             await exec.exec("git push --force");
 
 
+
 import { execSync } from 'child_process';
 import { writeFileSync } from 'fs';
 
@@ -89,12 +90,15 @@ import { writeFileSync } from 'fs';
 //     console.log(stdout);
 // });
 
+const branchName = process.argv[2];
+
+
 writeFileSync(`.changeset/changeset-${Math.round(Math.random() * 100000)}.md`,
 `---
 "dependabot-testing": patch
 ---
 
-this is a test
+this is a test (${branchName})
 `);
 
 execSync("git add .changeset");
@@ -102,4 +106,3 @@ execSync("git commit -m 'this is a test'");
 execSync("git push");
 // execSync("git commit -C HEAD --amend --no-edit");
 // execSync("git push --force");
-
