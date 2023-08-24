@@ -92,7 +92,6 @@ import { writeFileSync } from 'fs';
 
 const branchName = process.argv[2];
 
-execSync(`git switch ${branchName}`);
 
 writeFileSync(`.changeset/changeset-${Math.round(Math.random() * 100000)}.md`,
 `---
