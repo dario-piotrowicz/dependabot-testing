@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     if: true
     steps:
-      - name: show github context
-        run: echo "${{ toJson(github) }}"
+      # - name: show github context
+        # run: echo "${{ toJson(github) }}"
       - name: Checkout
         uses: actions/checkout@v3
         with:
