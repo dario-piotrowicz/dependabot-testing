@@ -43,6 +43,6 @@ ${
 `);
 
 execSync("git add .changeset");
-execSync("git commit -m 'add changeset'");
-execSync("git push");
+execSync("git commit -m 'update dependencies'");
+execSync("git push -f");
 
