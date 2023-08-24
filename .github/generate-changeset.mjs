@@ -4,7 +4,12 @@ import { writeFileSync } from 'fs';
 const branchName = process.argv[2];
 const targetBranch = process.env[3];
 
+console.log(`\x1b[31m running ${`git diff ${branchName}..${targetBranch} packages/create-cloudflare/src/frameworks/package.json`} \x1b[0m`);
+
+
 const diff = execSync(`git diff ${branchName}..${targetBranch} packages/create-cloudflare/src/frameworks/package.json`).toString();
+
+
 
 const changedPackages = diff.match(/-\s*".*":\s".*",?/g)?.map(
     match => match.match(/-\s*"(.*)":/)?.[1]
