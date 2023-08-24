@@ -9,7 +9,7 @@ jobs:
   get-bumped-framework:
     runs-on: ubuntu-latest
     outputs:
-      bumped-framework: ${{ steps.detect.outputs.result }}
+      bumped-framework: ${{ steps.detect-bumped-framework.outputs.result }}
     if: |
       github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
@@ -27,9 +27,9 @@ jobs:
           )
           echo ::set-output name=result::$str
       - name: detect-bumped-framework
-        id: detect
         uses: actions/github-script@v6
         with:
+          result-encoding: string
           script: |
             const body = `${{ steps.get-pr-description.outputs.result }}`;
 
@@ -62,7 +62,7 @@ jobs:
 
             console.log(`bumpedFramework = ${bumpedFramework}`);
 
-            core.setOutput('result', bumpedFramework);
+            return bumpedFramework;
 
   print-bumped-framework:
     needs: get-bumped-framework
