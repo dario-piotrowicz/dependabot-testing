@@ -8,7 +8,7 @@ on:
 jobs:
   generate-changeset:
     runs-on: ubuntu-latest
-    if: contains(github.event.labels.*.name, 'dependencies')
+    if: true
     steps:
       - name: show github context
         run: echo "${{ toJson(github) }}"
