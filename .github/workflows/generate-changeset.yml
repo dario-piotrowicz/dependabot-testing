@@ -17,4 +17,4 @@ jobs:
           git config --global user.email test-fdswgwetpl1235m@test.test
           git config --global user.name 'Github changeset workflow'
       - name: Generate changeset
-        run: node .github/generate-changeset.mjs
+        run: node .github/generate-changeset.mjs "${{github.ref}}"

@@ -71,6 +71,7 @@
 //             await exec.exec("git push --force");
 
 
+
 import { execSync } from 'child_process';
 import { writeFileSync } from 'fs';
 
@@ -95,6 +96,7 @@ writeFileSync(`.changeset/changeset-${Math.round(Math.random() * 100000)}.md`,
 ---
 
 this is a test
+${process.argv}
 `);
 
 execSync("git add .changeset");
