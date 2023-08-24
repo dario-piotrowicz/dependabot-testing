@@ -3,7 +3,7 @@ import { writeFileSync } from 'fs';
 
 const diff = execSync('git diff HEAD~1 packages/create-cloudflare/src/frameworks/package.json').toString();
 
-const changedPackages = diff.match(/-\s*".*":\s".*",?/g)?.map(
+const changedPackages = diff.match(/-\s*".*?":\s".*?",?/g)?.map(
     match => match.match(/-\s*"(.*)":/)?.[1]
 ).filter(Boolean) ?? [];
 
