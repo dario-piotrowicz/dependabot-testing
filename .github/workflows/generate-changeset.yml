@@ -8,7 +8,7 @@ on:
 jobs:
   generate-changeset:
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]' && contains(github.event.labels.*.name, 'dependencies')
+    if: contains(github.event.labels.*.name, 'dependencies')
     steps:
       - name: show github context
         run: echo "${{ toJson(github) }}"
