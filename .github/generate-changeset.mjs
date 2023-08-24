@@ -25,6 +25,10 @@ const changes = changedPackages.map(pkg => {
     }
 });
 
+if(!changes.length) {
+    throw new Error('No changes detected');
+}
+
 console.log(changes);
 
 writeFileSync(`.changeset/changeset-${Math.round(Math.random() * 100000)}.md`,
