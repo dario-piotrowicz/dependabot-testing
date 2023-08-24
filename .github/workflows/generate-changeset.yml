@@ -1,4 +1,4 @@
-name: Sync Renovate changeset
+name: Generate changeset
 on:
   pull_request_target
   # :
