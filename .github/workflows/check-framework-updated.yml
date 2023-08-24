@@ -1,0 +1,73 @@
+name: Check PR
+on:
+  pull_request_target
+  # :
+    # paths:
+    #   - 'packages/create-cloudflare/src/frameworks/package.json'
+
+jobs:
+  get-bumped-framework:
+    runs-on: ubuntu-latest
+    outputs:
+      bumped-framework: ${{ steps.detect.outputs.result }}
+    if: |
+      github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+          ref: ${{ github.head_ref }}
+      - name: Get PR description as string
+        id: get-pr-description
+        run: |
+          str=$(sed 's/`/\`/g' <<EOF
+            ${{ github.event.pull_request.body }}
+          EOF
+          )
+          echo ::set-output name=result::$str
+      - name: detect-bumped-framework
+        id: detect
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const body = `${{ steps.get-pr-description.outputs.result }}`;
+
+            const frameworkCliPackages = [
+              '@angular/cli',
+              'create-astro',
+              'create-docusaurus',
+              'create-hono',
+              'create-next-app',
+              'create-qwik',
+              'create-react-app',
+              'create-remix',
+              'create-solid',
+              'create-svelte',
+              'create-vue',
+              'gatsby',
+              'nuxi',
+              'colors', //TEST
+            ];
+
+            const semverRegexStr = '\\d+\\.\\d+\\.\\d+';
+
+            const frameworkCliRegex = new RegExp(
+              `\\s+Bumps\\s+\\[(${frameworkCliPackages.join(
+                '|'
+              )})\\]\\(.*?\\)\\s+from\\s+${semverRegexStr}\\s+to\\s+${semverRegexStr}`
+            );
+
+            const bumpedFramework = body.match(frameworkCliRegex)?.[1];
+
+            console.log(`bumpedFramework = ${bumpedFramework}`);
+
+            core.setOutput('result', bumpedFramework);
+
+  print-bumped-framework:
+    needs: get-bumped-framework
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: |
+          echo "the bumped framework is ${{ needs.get-bumped-framework.outputs.bumped-framework }}"

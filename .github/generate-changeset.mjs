@@ -1,6 +1,8 @@
 import { execSync } from 'child_process';
 import { writeFileSync } from 'fs';
 
+const prNumber = process.env[2];
+
 const diff = execSync('git diff HEAD~1 packages/create-cloudflare/src/frameworks/package.json').toString();
 
 const changedPackages = diff.match(/-\s*".*?":\s".*?",?/g)?.map(
@@ -29,7 +31,7 @@ if(!changes.length) {
     console.warn('No changes detected!');
 } else {
 	writeFileSync(
-		`.changeset/c3-frameworks-update-${new Date().getTime()}.md`,
+		`.changeset/c3-frameworks-update-${prNumber}.md`,
 		`---
 "dependabot-testing": patch
 ---
