@@ -26,7 +26,8 @@
 		"chalk": "5.0.0",
 		"colors": "1.0.0",
 		"bluebird": "3.0.0",
-		"browserify": "15.0.0"
+		"browserify": "15.0.0",
+		"debug": "4.3.0"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
