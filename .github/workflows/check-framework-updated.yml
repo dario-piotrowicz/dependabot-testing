@@ -9,7 +9,7 @@ jobs:
   get-bumped-framework:
     runs-on: ubuntu-latest
     outputs:
-      bumped-framework: ${{ steps.detect.outputs.result }}
+      bumped-framework-cli: ${{ steps.detect.outputs.result }}
     if: |
       github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
@@ -34,6 +34,10 @@ jobs:
         with:
           result-encoding: string
           script: |
+            import json from "packages/create-cloudflare/src/frameworks/package.json";
+
+            console.log({json});
+
             const body = `${{ steps.get-pr-description.outputs.result }}`;
 
             const frameworkCliPackages = [
@@ -50,7 +54,6 @@ jobs:
               'create-vue',
               'gatsby',
               'nuxi',
-              'colors', //TEST
             ];
 
             const semverRegexStr = '\\d+\\.\\d+\\.\\d+';
@@ -61,11 +64,8 @@ jobs:
               )})\\]\\(.*?\\)\\s+from\\s+${semverRegexStr}\\s+to\\s+${semverRegexStr}`
             );
 
-            const bumpedFramework = body.match(frameworkCliRegex)?.[1];
-
-            console.log(`bumpedFramework = ${bumpedFramework}`);
-
-            return bumpedFramework;
+            const bumpedFrameworkCli = body.match(frameworkCliRegex)?.[1];
+            return bumpedFrameworkCli;
 
   print-bumped-framework:
     needs: get-bumped-framework
@@ -73,4 +73,4 @@ jobs:
     steps:
       - name: Echo
         run: |
-          echo "the bumped framework is ${{ needs.get-bumped-framework.outputs.bumped-framework }}"
+          echo "the bumped framework is ${{ needs.get-bumped-framework.outputs.bumped-framework-cli }}"
