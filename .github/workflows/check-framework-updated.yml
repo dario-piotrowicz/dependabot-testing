@@ -34,7 +34,7 @@ jobs:
         with:
           result-encoding: string
           script: |
-            import json from "packages/create-cloudflare/src/frameworks/package.json";
+            const json = require('./packages/create-cloudflare/src/frameworks/package.json')
 
             console.log({json});
 
