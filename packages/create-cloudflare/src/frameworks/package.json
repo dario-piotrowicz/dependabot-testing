@@ -28,7 +28,7 @@
 		"bluebird": "3.0.0",
 		"browserify": "15.0.0",
 		"debug": "4.3.0",
-		"body-parser": "1.0.0"
+		"body-parser": "1.20.2"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
