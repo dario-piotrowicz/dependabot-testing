@@ -29,7 +29,7 @@
 		"browserify": "15.0.0",
 		"debug": "4.3.0",
 		"body-parser": "1.0.0",
-		"concat-stream": "1.0.0"
+		"concat-stream": "2.0.0"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
