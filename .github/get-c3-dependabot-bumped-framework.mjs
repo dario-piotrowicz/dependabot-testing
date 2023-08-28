@@ -1,4 +1,4 @@
-module.exports = function(prDescription){
+export default function getBumpedFrameworkCli(prDescription){
     const json = require('../packages/create-cloudflare/src/frameworks/package.json')
 
     const frameworkCliPackages = Object.values(json.frameworkCliMap);

@@ -34,7 +34,7 @@ jobs:
         with:
           result-encoding: string
           script: |
-            const getBumpedFrameworkCli = require('.github/get-c3-dependabot-bumped-framework.cjs');
+            const { default: getBumpedFrameworkCli } = await import('.github/get-c3-dependabot-bumped-framework.mjs')
             return getBumpedFrameworkCli(`${{ steps.get-pr-description.outputs.result }}`);
 
   print-bumped-framework:
