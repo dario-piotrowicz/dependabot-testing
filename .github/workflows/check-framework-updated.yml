@@ -34,24 +34,8 @@ jobs:
         with:
           result-encoding: string
           script: |
-            const json = require('./packages/create-cloudflare/src/frameworks/package.json')
-
-            const frameworkCliPackages = Object.values(json.frameworkCliMap);
-          
-            console.log({frameworkCliPackages});
-
-            const body = `${{ steps.get-pr-description.outputs.result }}`;
-
-            const semverRegexStr = '\\d+\\.\\d+\\.\\d+';
-
-            const frameworkCliRegex = new RegExp(
-              `(?:^|\\s+)Bumps\\s+\\[(${frameworkCliPackages.join(
-                '|'
-              )})\\]\\(.*?\\)\\s+from\\s+${semverRegexStr}\\s+to\\s+${semverRegexStr}`
-            );
-
-            const bumpedFrameworkCli = body.match(frameworkCliRegex)?.[1];
-            return bumpedFrameworkCli;
+            const getBumpedFrameworkCli = require('.github/get-c3-dependabot-bumped-framework.cjs');
+            return getBumpedFrameworkCli(`${{ steps.get-pr-description.outputs.result }}`);
 
   print-bumped-framework:
     needs: get-bumped-framework
