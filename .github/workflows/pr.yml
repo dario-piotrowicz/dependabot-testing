@@ -20,3 +20,6 @@ jobs:
 
       - name: test
         run: echo "this is a test"
+
+      - name: test failure
+        run: exit 1
