@@ -32,7 +32,8 @@
 		"concat-stream": "1.0.0",
 		"express": "4.0.0",
 		"grunt": "1.0.0",
-		"wrench": "1"
+		"wrench": "1",
+		"event-stream": "3.0.0"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
