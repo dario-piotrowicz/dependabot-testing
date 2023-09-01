@@ -24,12 +24,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.DEPENDABOT_PAT_TOKEN }}
         run: node .github/generate-changeset.mjs ${{ github.event.number }}
-      - name: "echo ref"
-        run: echo "${{ github.ref }}"
+      - name: "echo head_ref"
+        run: echo "${{ github.head_ref }}"
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
-          branch: ${{ github.ref }}
+          branch: ${{ github.head_ref }}
           amend: true
           force: true
           message: "[C3] Update frameworks cli dependencies"
