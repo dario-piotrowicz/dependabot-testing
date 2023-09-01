@@ -14,6 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          repository: dario-piotrowicz/dependabot-testing
           token: ${{ secrets.DEPENDABOT_PAT_TOKEN }}
           # persist-credentials: false
           fetch-depth: 2
