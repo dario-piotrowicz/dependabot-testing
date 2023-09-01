@@ -40,7 +40,7 @@
 		"yargs": "17.7.2",
 		"winston": "3.0.0",
 		"yosay": "2.0.0",
-		"ws": "8.0.0"
+		"ws": "8.13.0"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
