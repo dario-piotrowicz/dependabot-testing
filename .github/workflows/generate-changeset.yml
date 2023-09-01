@@ -35,4 +35,4 @@ jobs:
           author_name: 'Github changeset workflow'
           author_email: test-fdswgwetpl1235m@test.test
           message: "[C3] Update frameworks cli dependencies"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.DEPENDABOT_PAT_TOKEN }}
