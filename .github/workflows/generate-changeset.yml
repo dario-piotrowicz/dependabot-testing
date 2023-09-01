@@ -14,6 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          token: ${{ secrets.DEPENDABOT_PAT_TOKEN }}
           persist-credentials: false
           fetch-depth: 2
           ref: ${{ github.head_ref }}
@@ -25,15 +26,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.DEPENDABOT_PAT_TOKEN }}
         run: node .github/generate-changeset.mjs ${{ github.event.number }}
-      - name: "echo head_ref"
-        run: echo "${{ github.head_ref }}"
-      - name: Commit & Push changes
-        uses: actions-js/push@master
-        with:
-          branch: ${{ github.head_ref }}
-          amend: true
-          force: true
-          author_name: 'Github changeset workflow'
-          author_email: test-fdswgwetpl1235m@test.test
-          message: "[C3] Update frameworks cli dependencies"
-          github_token: ${{ secrets.DEPENDABOT_PAT_TOKEN }}
+      # - name: "echo head_ref"
+      #   run: echo "${{ github.head_ref }}"
+      # - name: Commit & Push changes
+      #   uses: actions-js/push@master
+      #   with:
+      #     branch: ${{ github.head_ref }}
+      #     amend: true
+      #     force: true
+      #     author_name: 'Github changeset workflow'
+      #     author_email: test-fdswgwetpl1235m@test.test
+      #     message: "[C3] Update frameworks cli dependencies"
+      #     github_token: ${{ secrets.DEPENDABOT_PAT_TOKEN }}
