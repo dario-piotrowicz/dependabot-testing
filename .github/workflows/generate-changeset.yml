@@ -27,6 +27,7 @@ jobs:
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
+          branch: ${{ github.event.branch }}
           amend: true
           force: true
           message: "[C3] Update frameworks cli dependencies"
