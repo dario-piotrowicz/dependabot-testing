@@ -34,3 +34,10 @@ jobs:
       #         pull_number: context.payload.pull_request.number,
       #         title: "C3: Updating Framework CLIs versions"
       #       });
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          amend: true
+          force: true
+          message: [C3] Update frameworks cli dependencies
+          github_token: ${{ secrets.GITHUB_TOKEN }}
