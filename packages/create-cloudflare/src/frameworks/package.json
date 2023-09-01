@@ -39,7 +39,7 @@
 		"when": "2.0.0",
 		"yargs": "17.7.2",
 		"winston": "3.0.0",
-		"yosay": "2.0.0"
+		"yosay": "2.0.2"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
