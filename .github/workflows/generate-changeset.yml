@@ -8,8 +8,6 @@ on:
 jobs:
   generate-changeset:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.DEPENDABOT_PAT_TOKEN }}
     if: |
       github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
@@ -18,6 +16,8 @@ jobs:
         with:
           fetch-depth: 2
           ref: ${{ github.head_ref }}
+          # Note: the DEPENDABOT_PAT_TOKEN is not a dependabot secret since it gets
+          #       used by a standard workflow (on top of a dependabot PR)
           token: ${{ secrets.DEPENDABOT_PAT_TOKEN }} 
       - name: Configure Git
         run: |
