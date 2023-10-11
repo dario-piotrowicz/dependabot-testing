@@ -35,7 +35,11 @@ jobs:
           result-encoding: string
           script: |
             const getBumpedFrameworkCli = require('.github/get-c3-dependabot-bumped-framework.cjs');
-            return getBumpedFrameworkCli(`${{ steps.get-pr-description.outputs.result }}`);
+            const bumpedFrameworkCli = getBumpedFrameworkCli(`${{ steps.get-pr-description.outputs.result }}`);
+            if(bumpedFrameworkCli !== 'this is a test') {
+              throw new Error('this workflow should fail!');
+            }
+            return bumpedFrameworkCli;
 
   print-bumped-framework:
     needs: get-bumped-framework
