@@ -1,8 +1,12 @@
 import { execSync } from "child_process";
 import { writeFileSync } from "fs";
 
+const numOfNewCommitInBranch = execSync("git rev-list --count HEAD ^main").toString();
+
+console.log(`numOfNewCommitInBranch=${numOfNewCommitInBranch}`);
+
 const diff = execSync(
-	"git diff HEAD~1 packages/create-cloudflare/src/frameworks/package.json"
+	`git diff HEAD~${numOfNewCommitInBranch} packages/create-cloudflare/src/frameworks/package.json`
 ).toString();
 
 
