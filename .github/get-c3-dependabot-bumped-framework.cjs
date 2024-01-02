@@ -11,6 +11,12 @@ module.exports = function(){
       ?.map((match) => match.match(/-\s*"(.*)":/)?.[1])
       .filter(Boolean) ?? [];
 
+  console.log('\nDIFF ===================\n\n');
+
+  console.log(diff);
+
+  console.log('\nFFID ===================\n\n');
+
   const changes = changedPackages.map((pkg) => {
     const getPackageChangeRegex = (addition) =>
       new RegExp(`${addition ? "\\+" : "-"}\\s*"${pkg}":\\s"(.*)",?`);
