@@ -5,6 +5,14 @@ const diff = execSync(
 	"git diff HEAD~1 packages/create-cloudflare/src/frameworks/package.json"
 ).toString();
 
+
+console.log('\nDIFF ===================\n\n');
+
+console.log(diff);
+
+console.log('\nFFID ===================\n\n');
+
+
 const changedPackages =
 	diff
 		.match(/-\s*".*?":\s".*?",?/g)
@@ -32,7 +40,7 @@ const changes = changedPackages.map((pkg) => {
 });
 
 if (!changes.length) {
-	console.warn("No changes detected!");
+	console.warn("No changes detected!!!");
 } else {
 	const prNumber = process.argv[2];
 
