@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import { writeFileSync } from "fs";
 
-const numOfNewCommitInBranch = execSync("git rev-list --count HEAD ^main").toString();
+const numOfNewCommitInBranch = execSync("git rev-list --count HEAD").toString();
 
 console.log(`numOfNewCommitInBranch=${numOfNewCommitInBranch}`);
 
