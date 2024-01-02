@@ -1,7 +1,7 @@
 const { execSync } = require('child_process');
 
 module.exports = function(){
-  const numOfNewCommitInBranch = execSync("git rev-list --count HEAD").toString();
+  const numOfNewCommitInBranch = parseInt(execSync("git rev-list --count HEAD").toString()) - 1;
 
   console.log(`numOfNewCommitInBranch=${numOfNewCommitInBranch}`);
   
