@@ -7,7 +7,7 @@ module.exports = function(){
     console.warn("No changes detected!");
     return null;
   } else if(changedPackages.length > 1){
-    console.warn("More then one package has changed, that's not currently supported");
+    console.warn(`More then one package has changed (${changedPackages.join(', ')}), that's not currently supported`);
     throw new Error('More than one change detected');
   } else {
     return changedPackages[0];

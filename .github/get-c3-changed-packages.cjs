@@ -4,7 +4,7 @@ const { execSync } = require('child_process');
  * Detects the names of the packages that changed in the packages/create-cloudflare/src/frameworks/package.json file
  *
  * @param {1|2} numberOfCommits The number of commits to diff in order to detect the correct changes
- * @returns an array containing names of the packages that changed
+ * @returns {string[]} an array containing names of the packages that changed
  */
 module.exports = function(numberOfCommits){
   const diff = execSync(
@@ -17,13 +17,5 @@ module.exports = function(numberOfCommits){
         .map((match) => match.match(/-\s*"(.*)":/)?.[1])
         .filter(Boolean);
 
-  if (changedPackages.length === 0) {
-    console.warn("No changes detected!");
-    return null;
-  } else if(changedPackages.length > 1){
-    console.warn("More then one package has changed, that's not currently supported");
-    throw new Error('More than one change detected');
-  } else {
-    return changedPackages[0];
-  }
+  return changedPackages;
 };
