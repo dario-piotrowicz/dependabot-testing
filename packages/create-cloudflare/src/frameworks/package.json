@@ -55,7 +55,7 @@
 		"lo-jsondb": "1.0.0",
 		"lo-test": "1.0.0",
 		"lo-vue-components": "1.0.0",
-		"vu-design": "1.0.0"
+		"vu-design": "1.1.0"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
