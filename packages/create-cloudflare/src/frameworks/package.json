@@ -39,7 +39,8 @@
 		"when": "2.0.0",
 		"yargs": "16.0.0",
 		"yosay": "1.0.0",
-		"pug": "2.0.0"
+		"pug": "2.0.0",
+		"chai": "2.0.0"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
