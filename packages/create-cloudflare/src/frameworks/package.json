@@ -50,7 +50,8 @@
 		"ws": "8.0.0",
 		"qwik-forge-grid": "2.0.0",
 		"qwik-ionicons": "1.0.0",
-		"@tegonal/portabletext-qwik": "1.0.0"
+		"@tegonal/portabletext-qwik": "1.0.0",
+		"lo-utils": "1.0.0"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
