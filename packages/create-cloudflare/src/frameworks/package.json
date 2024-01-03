@@ -52,7 +52,7 @@
 		"qwik-ionicons": "1.0.0",
 		"@tegonal/portabletext-qwik": "1.0.0",
 		"lo-utils": "1.0.0",
-		"lo-jsondb": "1.0.0",
+		"lo-jsondb": "1.3.0",
 		"lo-test": "1.0.0"
 	},
 	"frameworkCliMap": {
