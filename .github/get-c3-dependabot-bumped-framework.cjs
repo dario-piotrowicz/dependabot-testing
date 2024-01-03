@@ -1,15 +1,7 @@
-const { execSync } = require('child_process');
+const getChangedPackages = require('./get-c3-changed-packages.cjs');
 
 module.exports = function(){
-  const diff = execSync(
-    `git diff HEAD~2 packages/create-cloudflare/src/frameworks/package.json`
-  ).toString();
-
-  const changedPackages =
-    diff
-        .match(/-\s*".*?":\s".*?",?/g)
-        .map((match) => match.match(/-\s*"(.*)":/)?.[1])
-        .filter(Boolean);
+  const changedPackages = getChangedPackages(2);
 
   if (changedPackages.length === 0) {
     console.warn("No changes detected!");
