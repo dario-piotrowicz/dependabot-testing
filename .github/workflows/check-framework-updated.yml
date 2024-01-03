@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 2
+          fetch-depth: 3
           ref: ${{ github.head_ref }}
       - name: detect-bumped-framework
         id: detect
