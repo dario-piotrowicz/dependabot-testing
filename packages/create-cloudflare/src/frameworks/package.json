@@ -47,7 +47,8 @@
 		"zod-to-json-schema": "1.0.0",
 		"@ty-ras/backend-node-zod-openapi": "2.0.0",
 		"yeoman-generator": "3.0.0",
-		"ws": "8.0.0"
+		"ws": "8.0.0",
+		"qwik-forge-grid": "2.0.0"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
