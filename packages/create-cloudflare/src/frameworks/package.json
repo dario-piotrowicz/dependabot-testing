@@ -49,7 +49,7 @@
 		"yeoman-generator": "3.0.0",
 		"ws": "8.0.0",
 		"qwik-forge-grid": "2.0.0",
-		"qwik-ionicons": "1.0.0"
+		"qwik-ionicons": "1.0.5"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
