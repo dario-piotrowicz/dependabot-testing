@@ -2,7 +2,7 @@ import { execSync } from "child_process";
 import { writeFileSync } from "fs";
 import getChangedPackages  from './get-c3-changed-packages.cjs'
 
-const changedPackages = getChangedPackages(2);
+const changedPackages = getChangedPackages(1);
 
 
   const changes = changedPackages.map((pkg) => {
