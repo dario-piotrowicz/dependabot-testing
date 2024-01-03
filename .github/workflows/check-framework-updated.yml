@@ -1,9 +1,8 @@
 name: Check PR
 on:
   pull_request_target
-  :
-    paths:
-      - 'packages/create-cloudflare/src/frameworks/package.json'
+  paths:
+    - packages/create-cloudflare/**
 
 jobs:
   get-bumped-framework:
