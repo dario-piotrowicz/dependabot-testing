@@ -41,7 +41,7 @@
 		"yosay": "1.0.0",
 		"pug": "2.0.0",
 		"chai": "2.0.0",
-		"zod": "3.0.0"
+		"zod": "3.22.4"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
