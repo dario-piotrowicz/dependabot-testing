@@ -43,7 +43,7 @@
 		"chai": "2.0.0",
 		"zod": "3.0.0",
 		"zod-error": "1.0.0",
-		"zod-http-schemas": "2.0.0"
+		"zod-http-schemas": "2.0.4"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
