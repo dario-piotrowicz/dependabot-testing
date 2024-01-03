@@ -53,7 +53,7 @@
 		"@tegonal/portabletext-qwik": "1.0.0",
 		"lo-utils": "1.0.0",
 		"lo-jsondb": "1.0.0",
-		"lo-test": "1.0.0",
+		"lo-test": "1.0.1",
 		"lo-vue-components": "1.0.0",
 		"vu-design": "1.0.0"
 	},
