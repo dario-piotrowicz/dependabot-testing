@@ -1,7 +1,8 @@
 name: Generate changeset
 on:
   pull_request_target:
-    event: opened
+    types:
+      - opened
     paths:
       - 'packages/create-cloudflare/src/frameworks/package.json'
 
