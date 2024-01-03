@@ -2,7 +2,7 @@ name: Check PR
 on:
   pull_request_target:
     paths:
-      - packages/create-cloudflare/**
+      - .changeset/c3-frameworks-update-*.md
 
 jobs:
   get-bumped-framework:
