@@ -48,7 +48,7 @@
 		"@ty-ras/backend-node-zod-openapi": "2.0.0",
 		"yeoman-generator": "3.0.0",
 		"ws": "8.0.0",
-		"qwik-forge-grid": "2.0.0"
+		"qwik-forge-grid": "2.3.3"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
