@@ -44,7 +44,7 @@
 		"zod": "3.0.0",
 		"zod-error": "1.0.0",
 		"zod-http-schemas": "2.0.0",
-		"zod-to-json-schema": "1.0.0"
+		"zod-to-json-schema": "3.22.3"
 	},
 	"frameworkCliMap": {
 		"angular": "@angular/cli",
