@@ -60,8 +60,8 @@ ${generateChangesetBody(changes)}
 	);
 
 	execSync("git add .changeset");
-	execSync("git commit -m '[C3] Update frameworks cli dependencies'");
-	execSync("git push");
+	execSync("git commit --amend --no-edit");
+	execSync("git push --force-with-lease");
 }
 
 function generateChangesetBody(changes) {
