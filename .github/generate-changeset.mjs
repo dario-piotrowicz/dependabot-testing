@@ -1,10 +1,16 @@
 import { execSync } from "child_process";
 import { writeFileSync } from "fs";
-import getChangedPackages  from './get-c3-changed-packages.cjs'
 
-const changedPackages = getChangedPackages(1);
+const diff = execSync(
+	`git diff HEAD~1 packages/create-cloudflare/src/frameworks/package.json`
+  ).toString();
 
-
+  const changedPackages =
+	diff
+		.match(/-\s*".*?":\s".*?",?/g)
+		?.map((match) => match.match(/-\s*"(.*)":/)?.[1])
+		.filter(Boolean) ?? [];
+  
   const changes = changedPackages.map((pkg) => {
 	const getPackageChangeRegex = (addition) =>
 	  new RegExp(`${addition ? "\\+" : "-"}\\s*"${pkg}":\\s"(.*)",?`);
