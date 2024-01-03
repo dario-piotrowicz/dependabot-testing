@@ -1,6 +1,39 @@
+const { execSync } = require('child_process');
+
 module.exports = function(){
-  const collectChangesPackagesChanges = require('.github/collect-c3-packages-changes.cjs');
-  const changes = collectChangesPackagesChanges();
+  const numOfNewCommitInBranch = parseInt(execSync("git rev-list --count HEAD").toString()) - 1;
+
+  console.log(`numOfNewCommitInBranch=${numOfNewCommitInBranch}`);
+  
+  const diff = execSync(
+    `git diff HEAD~${numOfNewCommitInBranch} packages/create-cloudflare/src/frameworks/package.json`
+  ).toString();
+
+  const changedPackages =
+	diff
+		.match(/-\s*".*?":\s".*?",?/g)
+		?.map((match) => match.match(/-\s*"(.*)":/)?.[1])
+		.filter(Boolean) ?? [];
+  
+  const changes = changedPackages.map((pkg) => {
+    const getPackageChangeRegex = (addition) =>
+      new RegExp(`${addition ? "\\+" : "-"}\\s*"${pkg}":\\s"(.*)",?`);
+
+    const from = diff.match(getPackageChangeRegex(false))?.[1];
+    const to = diff.match(getPackageChangeRegex(true))?.[1];
+
+    if (!from || !to) {
+      throw new Error(
+        `Unexpected changes for package ${pkg} (could not determine upgrade)`
+      );
+    }
+
+    return {
+      package: pkg,
+      from,
+      to,
+    };
+  });
 
   if (changes.length === 0) {
     console.warn("No changes detected!");
@@ -9,7 +42,7 @@ module.exports = function(){
     console.warn("More then one package has changes, that's not currently supported");
     throw new Error('More than one change detected');
   } else {
-    console.log(`====>>>>> ${changes[0].package}`);
+    console.log(`%%%%%%+++++++>>>>> ${changes[0].package}`);
     return changes[0].package;
   }
 };
