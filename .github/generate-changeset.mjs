@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import { writeFileSync } from "fs";
+import collectChangesPackagesChanges from "./collect-c3-packages-changes.cjs";
 
-const collectChangesPackagesChanges = require('.github/collect-c3-packages-changes.cjs');
 const changes = collectChangesPackagesChanges();
 
 if (!changes.length) {
